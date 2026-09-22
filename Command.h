@@ -45,8 +45,9 @@ class IssueAlertCommand : public Command{
 
 class CancelCommand : public Command{
     private:
-        Command* target;
+        Command* targetCommand;
     public:
+        CancelCommand(Command* target);
         bool execute() override;
         bool undo() override;
         string describe() override;
