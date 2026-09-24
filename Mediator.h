@@ -3,6 +3,7 @@
 
 #include "Incident.h"
 #include "CampusArea.h"
+#include "AccessController.h"
 
 #include <iostream>
 #include <std::vector>
@@ -48,7 +49,7 @@ class CommsService : public ResponseComponent{
     public:
         using ResponseComponent::ResponseComponent;
         void handleNotice() override;
-        void broadCast(Incident*, string);
+        void broadcast(Incident*, string);
         void retract(Incident*);
 };
 
@@ -60,32 +61,36 @@ class ResponseUnit : ResponseComponent{
         virtual bool recall(Incident*) =0;
 };
 
+class AccessController;
+
 class SecurityTeam : public ResponseUnit {
+    private:
+        AccessController* controller;
     public:
-        using ResponseUnit::ResponseUnit;
+        SecurityTeam(ResponseMediator* m, string n, AccessController* ac);
         void handleNotice() override;
-        bool dispatchTo(Incident* incident) override;
-        bool recall(Incident* incident) override;
-        bool secureArea(CampusArea* area);
-        bool reOpenArea(CampusArea* area);
+        bool dispatchTo(Incident*) override;
+        bool recall(Incident*) override;
+        bool secureArea(CampusArea*);
+        bool reOpenArea(CampusArea*);
 };
 
-class medicalTeam : public ResponseUnit{
+class MedicalTeam : public ResponseUnit{
     public:
         using ResponseUnit::ResponseUnit;
 
         void handleNotice() override;
-        bool dispatchTo(Incident* incident) override;
-        bool recall(Incident* incident) override;
+        bool dispatchTo(Incident*) override;
+        bool recall(Incident*) override;
 };
 
-class facilitiesTeam : public ResponseUnit{
+class FacilitiesTeam : public ResponseUnit{
     public:
         using ResponseUnit::ResponseUnit;
 
         void handleNotice() override;
-        bool dispatchTo(Incident* incident) override;
-        bool recall(Incident* incident) override;
+        bool dispatchTo(Incident*) override;
+        bool recall(Incident*) override;
 };
 
 #endif
