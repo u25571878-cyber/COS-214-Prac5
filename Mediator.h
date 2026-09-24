@@ -41,6 +41,7 @@ class ResponseComponent {
         ResponseComponent(ResponseMediator* m, string n);
         virtual void handleNotice() =0;
         virtual ~ResponseComponent() = default;
+        string getName();
 };
 
 class CommsService : public ResponseComponent{

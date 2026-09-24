@@ -8,7 +8,7 @@ void IncidentCoordinator::addComponent(ResponseComponent* rc){
 
 void IncidentCoordinator::unitDispatched(ResponseUnit* ru, Incident* i){
     if (i == nullptr || ru == nullptr) return;
-    cout << "unit has been dispatched"<<endl;
+    cout << "unit "<< ru->getName() <<" has been dispatched"<<endl;
 
     for(ResponseComponent* rs : colleagues){
         if(rs == ru) continue;
@@ -40,4 +40,4 @@ void IncidentCoordinator::areaSecured(CampusArea* ca, Incident* i){
         rs->handleNotice();
     }
 
-}
+}1
