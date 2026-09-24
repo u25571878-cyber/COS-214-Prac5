@@ -2,7 +2,7 @@
 #define COMMAND_H
 
 #include <iostream>
-#include "ResponseMediator.h"
+#include "Mediator.h"
 #include "Incident.h"
 
 using namespace std;

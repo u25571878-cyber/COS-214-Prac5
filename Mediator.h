@@ -5,7 +5,7 @@
 #include "CampusArea.h"
 
 #include <iostream>
-#include <vector>
+#include <std::vector>
 
 using namespace std;
 
