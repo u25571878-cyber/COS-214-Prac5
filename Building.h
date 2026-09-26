@@ -1,3 +1,6 @@
+#ifndef BUILDING_H
+#define BUILDING_H
+
 #include "CampusArea.h"
 #include <vector>
 
@@ -13,3 +16,5 @@ class Building : public CampusArea{
         bool reopen(AccessController&);
         ~Building();
 };
+
+#endif //BUILDING_H

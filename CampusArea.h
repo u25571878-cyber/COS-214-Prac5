@@ -1,3 +1,6 @@
+#ifndef CAMPUSAREA_H
+#define CAMPUSAREA_H
+
 #include <string>
 #include "AccessController.h"
 
@@ -14,3 +17,5 @@ class CampusArea{
         bool isLocked();
         virtual ~CampusArea();
 };
+
+#endif //CAMPUSAREA_H
