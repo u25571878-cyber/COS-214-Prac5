@@ -3,21 +3,26 @@
 using namespace std;
 
 bool OperatorConsole::run(Command* c){
-    if(c == nullptr)return false;
+    if (c == nullptr) return false;
 
-    c->execute();
-    history.push_back(unique_ptr<Command>(c)); ///add it to the history
+    unique_ptr<Command> cmd(c);
+    if (!cmd->execute())
+        return false;
+
+    history.push_back(std::move(cmd));
     return true;
+
 }
 
 
 bool OperatorConsole::cancelLast(){
     if (history.empty()) return false;
 
-    history.back()->undo();
-
+    bool success = history.back()->undo();
     history.pop_back();
-    return true;
+
+    return success;
+
 }
 
 OperatorConsole::~OperatorConsole(){

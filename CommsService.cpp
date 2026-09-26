@@ -1,7 +1,5 @@
 #include "Mediator.h"
 
-SecurityTeam:: SecurityTeam(ResponseMediator* m, string n, AccessController* ac): ResponseUnit(m, n), controller(ac) {}
-
 void CommsService::handleNotice(){
     cout << " CommsService (" << getName() << ") received a system notice. Standing by to broadcast updates." << endl;
 }

@@ -1,5 +1,6 @@
 #include "Mediator.h"
 
+SecurityTeam:: SecurityTeam(ResponseMediator* m, string n, AccessController* ac): ResponseUnit(m, n), controller(ac) {}
 
 void SecurityTeam::handleNotice(){
     cout << " SecurityTeam (" << getName() << ") received a system notice. Standing by to dispatch and secure the area" << endl;
@@ -34,6 +35,11 @@ bool SecurityTeam::secureArea(CampusArea* a){
 
     cout<<"Securing the area: ("<< a->getName()<<")" <<endl;
     a->secure(controller);
+
+    if (mediator != nullptr) {
+        mediator->areaSecured(a, nullptr);
+    }
+
     return true;
 }
 

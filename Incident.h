@@ -2,6 +2,7 @@
 #define INCIDENT_H
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -21,6 +22,10 @@ class Incident{
         void resolve();
         void cancel();
         void setState(IncidentState*);
+        int getID() const { return localID; }
+        string getType() const { return type; }
+        int getSeverity() const { return severity; }
+
         ~Incident();
 };
 
@@ -28,10 +33,10 @@ class Incident{
 class IncidentState{
     public:
         virtual void dispatch(Incident*)= 0;
-        virtual void escalate(Incident* =0);
+        virtual void escalate(Incident*)=0;
         virtual void resolve(Incident*) =0;
         virtual void cancel(Incident*)=0;
-        virtual ~IncidentState();
+        virtual ~IncidentState() = default;
 };
 
 class ReportState: public IncidentState{

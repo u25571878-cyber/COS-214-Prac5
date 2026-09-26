@@ -5,17 +5,21 @@ SecureAreaCommand::SecureAreaCommand(SecurityTeam* st, CampusArea* ca): security
 bool SecureAreaCommand::execute() {
     if(securityTeam == nullptr || campusArea == nullptr) return false;
 
-    securityTeam->secureArea(campusArea);
-    cout<<"securing the area " <<endl;
-    return true;
+    bool success = securityTeam->secureArea(campusArea);
+    if (success) {
+        cout << "securing the area" << endl;
+    }
+    return success;
 }
 
 bool SecureAreaCommand::undo(){
     if(securityTeam == nullptr || campusArea == nullptr) return false;
 
-    securityTeam->reopenArea(campusArea);
-    cout<<"reopening the area " <<endl;
-    return true;
+    bool success = securityTeam->reOpenArea(campusArea);
+    if (success) {
+        cout << "reopening the area" << endl;
+    }
+    return success;
 }
 
 string SecureAreaCommand::describe(){

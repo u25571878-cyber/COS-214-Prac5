@@ -6,7 +6,7 @@
 #include "AccessController.h"
 
 #include <iostream>
-#include <std::vector>
+#include <vector>
 
 using namespace std;
 
@@ -53,7 +53,7 @@ class CommsService : public ResponseComponent{
         void retract(Incident*);
 };
 
-class ResponseUnit : ResponseComponent{
+class ResponseUnit : public ResponseComponent{
     public:
         using ResponseComponent::ResponseComponent;
         virtual ~ResponseUnit() = default;

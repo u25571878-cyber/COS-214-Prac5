@@ -32,12 +32,13 @@ void IncidentCoordinator::escalated(Incident* i){
 
 
 void IncidentCoordinator::areaSecured(CampusArea* ca, Incident* i){
-    if (i == nullptr || ca == nullptr) return;
+    if (ca == nullptr ) return;
 
     cout<<"Campus Area has been secured"<<endl;
+
 
     for(ResponseComponent* rs : colleagues){
         rs->handleNotice();
     }
 
-}1
+}

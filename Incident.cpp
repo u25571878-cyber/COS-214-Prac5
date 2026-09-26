@@ -16,7 +16,7 @@ void Incident::dispatch(){
 }
 
 void Incident::escalate(){
-    if (severity <= 10)
+    if (severity < 10)
         severity++;
 
     state->escalate(this);
