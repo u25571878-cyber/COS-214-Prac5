@@ -16,13 +16,15 @@ class Command{
         virtual ~Command() = default;
 };
 
-class ResponseUnit;
+class SecurityTeam;
+class CampusArea;
 
 class SecureAreaCommand: public Command{
     private:
-        ResponseUnit* dispatchUnit;
+        SecurityTeam* securityTeam;
+        CampusArea* campusArea;
     public:
-        SecureAreaCommand(ResponseUnit* du);
+        SecureAreaCommand(SecurityTeam* st, CampusArea* ca);
         bool execute() override;
         bool undo() override;
         string describe() override;
@@ -35,7 +37,7 @@ class IssueAlertCommand : public Command{
     private:
         CommsService* commsService;
         Incident* incident;
-        String message;
+        string message;
     public:
         IssueAlertCommand(CommsService* cs, Incident* i, string s);
         bool execute() override;
@@ -52,6 +54,8 @@ class CancelCommand : public Command{
         bool undo() override;
         string describe() override;
 };
+
+class ResponseUnit;
 
 class DispatchUnitCommand : public Command{
     private:
