@@ -4,6 +4,8 @@
 #include <string>
 #include "AccessController.h"
 
+class AccessController;
+
 using namespace std;
 
 class CampusArea{

@@ -1,6 +1,8 @@
 #ifndef ACCESSCONTROLLER_H
 #define ACCESSCONTROLLER_H
-#include "CampusArea.h"
+// #include "CampusArea.h"
+
+class CampusArea;
 
 class AccessController{
     public:
