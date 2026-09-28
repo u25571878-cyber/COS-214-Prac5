@@ -1,0 +1,9 @@
+==21882==
+==21882== HEAP SUMMARY:
+==21882==     in use at exit: 0 bytes in 0 blocks
+==21882==   total heap usage: 74 allocs, 74 frees, 77,568 bytes allocated
+==21882==
+==21882== All heap blocks were freed -- no leaks are possible
+==21882==
+==21882== For lists of detected and suppressed errors, rerun with: -s
+==21882== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
