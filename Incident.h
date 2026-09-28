@@ -7,6 +7,7 @@
 using namespace std;
 
 class IncidentState;
+class CampusArea;
 
 class Incident{
     private:
@@ -15,6 +16,7 @@ class Incident{
         string type;
         int severity; /// 1-10
         IncidentState* state;
+        CampusArea* location; /// non-owning; set by whoever dispatches to a place
     public:
         Incident(IncidentState*, string, int);
         void dispatch();
@@ -22,6 +24,8 @@ class Incident{
         void resolve();
         void cancel();
         void setState(IncidentState*);
+        void setLocation(CampusArea* loc) { location = loc; }
+        CampusArea* getLocation() const { return location; }
         int getID() const { return localID; }
         string getType() const { return type; }
         int getSeverity() const { return severity; }

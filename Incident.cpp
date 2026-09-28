@@ -2,7 +2,7 @@
 
 int Incident::id = 0;
 
-Incident::Incident(IncidentState* s, string t, int i): type(t), severity(i){
+Incident::Incident(IncidentState* s, string t, int i): type(t), severity(i), location(nullptr){
     localID = id++;
 
     if(s == nullptr)

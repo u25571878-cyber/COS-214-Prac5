@@ -1,4 +1,5 @@
 #include "DoorAdapter.h"
+#include "CampusArea.h"
 
 DoorAdapter::DoorAdapter(DoorController* controller) : doorController(controller){}
 
@@ -13,7 +14,7 @@ int DoorAdapter::zoneId(CampusArea* area){
     string areaName = area -> getName();
 
     int hash = 0;
-    for(int i = 0; i < areaName.size(); i++){
+    for(std::size_t i = 0; i < areaName.size(); i++){
         hash = hash * 31 + static_cast<int>(areaName[i]);
     }
     if(hash < 0){

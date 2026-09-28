@@ -3,7 +3,7 @@
 Building::Building(string areaName) : CampusArea(areaName){};
 
 Building::~Building(){
-    for(int i = 0; i < areas.size(); i++)
+    for(std::size_t i = 0; i < areas.size(); i++)
     {
         delete areas[i];
     }
@@ -23,7 +23,7 @@ bool Building::secure(AccessController& controller){
         return false;
     }
     bool allSuccessful = true;
-    for(int i = 0; i < areas.size(); i++){
+    for(std::size_t i = 0; i < areas.size(); i++){
         bool success = areas[i] -> secure(controller);
         if(!success){
             allSuccessful = false;
@@ -38,7 +38,7 @@ bool Building::reopen(AccessController& controller){
         return false;
     }
     bool allSuccessful = true;
-    for(int i = 0; i < areas.size(); i++){
+    for(std::size_t i = 0; i < areas.size(); i++){
         bool success = areas[i] -> reopen(controller);
         if(!success){
             allSuccessful = false;

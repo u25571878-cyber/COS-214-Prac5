@@ -7,27 +7,31 @@
 #include "Command.h"
 #include "OperatorConsole.h"
 #include "Building.h"
+#include "IncidentRegistry.h"
 
-
-class Emergency {
+class Emergency
+{
 private:
-    OperatorConsole& console;
-    SecurityTeam& securityTeam;
-    MedicalTeam& medicalTeam;
-    FacilitiesTeam& facilitiesTeam;
-    CommsService& commsService;
+    OperatorConsole &console;
+    IncidentCoordinator &coordinator;
+    SecurityTeam &securityTeam;
+    MedicalTeam &medicalTeam;
+    FacilitiesTeam &facilitiesTeam;
+    CommsService &commsService;
+    IncidentRegistry registry;
 
 public:
-    Emergency(OperatorConsole& operatorConsole,
-              SecurityTeam& security,
-              MedicalTeam& medical,
-              FacilitiesTeam& facilities,
-              CommsService& comms);
-    Incident* reportIncident(const std::string& type, int severity);
-    bool evacuation(Incident& incident, Building& building);
-    bool medicalEmergency(Incident& incident);
-
+    Emergency(OperatorConsole &operatorConsole,
+              IncidentCoordinator &incidentCoordinator,
+              SecurityTeam &security,
+              MedicalTeam &medical,
+              FacilitiesTeam &facilities,
+              CommsService &comms);
+    Incident *reportIncident(const std::string &type, int severity);
+    Incident *findIncident(int id);
+    bool evacuation(Incident &incident, Building &building);
+    bool medicalEmergency(Incident &incident);
+    bool escalateIncident(Incident &incident);
 };
 
-
-#endif //EMERGENCY_H
+#endif // EMERGENCY_H

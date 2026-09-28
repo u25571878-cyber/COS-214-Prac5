@@ -34,7 +34,7 @@ bool SecurityTeam::secureArea(CampusArea* a){
     if (a == nullptr) return false;
 
     cout<<"Securing the area: ("<< a->getName()<<")" <<endl;
-    a->secure(controller);
+    a->secure(*controller);
 
     if (mediator != nullptr) {
         mediator->areaSecured(a, nullptr);
@@ -47,6 +47,6 @@ bool SecurityTeam::reOpenArea(CampusArea* a){
     if (a == nullptr) return false;
 
     cout<<"reOpening the area: ("<< a->getName()<<")" <<endl;
-    a->reOpen(controller);///fix this
+    a->reopen(*controller);
     return true;
 }
