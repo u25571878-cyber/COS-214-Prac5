@@ -1,0 +1,16 @@
+services:
+  campusguard:
+    build: .
+    container_name: campusguard
+    # Keeps stdin open and allocates a tty so the interactive menu works
+    # when this service is run directly (see README). Harmless for the
+    # scripted --demo entrypoint used by `docker compose up`.
+    stdin_open: true
+    tty: true
+    # Needed for gdb to attach inside the container when a tutor asks
+    # for a live debugging session (ptrace is blocked by Docker's
+    # default seccomp/capability profile otherwise).
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
